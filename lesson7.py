@@ -8,10 +8,10 @@ bot_token = "7836336644:AAFVBATVsgkq3urGfDCTAtekWSZjD_0nLmg"
 # connect to a database mysql
 try:
     conn = mysql.connector.connect(
-        host="localhost",
+        host="mysql.railway.internal",
         user="root",
-        password="16133",
-        database="telegram_bot"
+        password="OxcXwLapaUeZFubVyQwOVfaNlDbEInBR",
+        database="railway"
     )
     cursor = conn.cursor()
 
