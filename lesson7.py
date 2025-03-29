@@ -5,22 +5,7 @@ from telegram.ext import *
 
 bot_token = "7836336644:AAFVBATVsgkq3urGfDCTAtekWSZjD_0nLmg"
 
-# connect to a database mysql
-try:
-    conn = mysql.connector.connect(
-        # host="mysql.railway.internal",
-        # user="root",
-        # password="OxcXwLapaUeZFubVyQwOVfaNlDbEInBR",
-        # database="railway"
-    )
-    cursor = conn.cursor()
 
-    # Granting privileges
-    cursor.execute("GRANT ALL PRIVILEGES ON telegram_bot.* TO 'root'@'localhost'")
-    cursor.execute("FLUSH PRIVILEGES")
-except Error  as e:
-    print(f"Error connecting to MySQL: {e}")
-    exit(1)  # Exit the script if the database connection fails
 
 
 
@@ -46,26 +31,8 @@ async def info_command(update:Update,context:CallbackContext)-> None:
 async def service_command(update:Update,context:CallbackContext)->None:
     await update.message.reply_text("I can send messages, automate tasks, and more! 🤖")
 
-async def chat_memory(update:Update,context:CallbackContext)->None:
-    user_id=update.message.chat_id
-    user_message=update.message.text.lower()
-    
-    if not user_message.startswith("/history"):
-        cursor.execute("INSERT INTO messages(user_id,message) VALUES(%s,%s)",(user_id,user_message))
-        conn.commit()
 
     
-
-async def history_command(update: Update, context: CallbackContext) -> None:
-    user_id = update.message.chat_id
-
-    # Retrieve last 5 messages from this user
-    cursor.execute("SELECT message FROM messages WHERE user_id = %s ORDER BY id DESC LIMIT 10", (user_id,))
-    history = cursor.fetchall()
-
-    history_text = "\n".join([msg[0] for msg in history]) if history else "No messages found."
-
-    await update.message.reply_text(f"Your recent messages:\n{history_text}")
 
 
 
