@@ -8,10 +8,10 @@ bot_token = "7836336644:AAFVBATVsgkq3urGfDCTAtekWSZjD_0nLmg"
 # connect to a database mysql
 try:
     conn = mysql.connector.connect(
-        host=" bngugflr9qmtmftnhdg6-mysql.services.clever-cloud.com",
-        user="ugqczuxp0nghnwkn",
-        password="QY6pIUjRN76hlpvsOXfl",
-        database="bngugflr9qmtmftnhdg6"
+        # host=" bngugflr9qmtmftnhdg6-mysql.services.clever-cloud.com",
+        # user="ugqczuxp0nghnwkn",
+        # password="QY6pIUjRN76hlpvsOXfl",
+        # database="bngugflr9qmtmftnhdg6"
     )
     cursor = conn.cursor()
 
